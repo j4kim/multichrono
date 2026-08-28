@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { clock } from "../chronoStore";
+import { getMs } from "../chronoStore";
 
 const props = defineProps({
   chrono: Object,
@@ -17,17 +17,7 @@ function formatTime(ms) {
     .join(":");
 }
 
-const ms = computed(() => {
-  if (props.chrono.state === "started") {
-    const elapsed = Math.max(0, clock.value - props.chrono.started_at);
-    return props.chrono.offset + elapsed;
-  } else if (props.chrono.state === "paused") {
-    return props.chrono.offset;
-  }
-  return 0;
-});
-
-const time = computed(() => formatTime(ms.value));
+const time = computed(() => formatTime(getMs(props.chrono)));
 </script>
 
 <template>

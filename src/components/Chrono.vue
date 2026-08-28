@@ -2,6 +2,7 @@
 import { getBgClass } from "../chronoStore.js";
 import Time from "./Time.vue";
 import ChronoButtons from "./ChronoButtons.vue";
+import Price from "./Price.vue";
 
 const props = defineProps({
   chrono: Object,
@@ -21,6 +22,7 @@ const props = defineProps({
         {{ chrono.label }}
       </div>
       <Time class="text-4xl" :chrono></Time>
+      <Price class="text-3xl font-bold" :chrono></Price>
     </div>
     <ChronoButtons :chrono :index />
   </div>

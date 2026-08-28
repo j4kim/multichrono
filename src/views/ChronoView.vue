@@ -5,6 +5,7 @@ import { useRoute } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";
 import ChronoButtons from "../components/ChronoButtons.vue";
+import Price from "../components/Price.vue";
 
 const route = useRoute();
 
@@ -26,7 +27,7 @@ const chrono = computed(() => chronos.value[route.params.index]);
     >
       <div class="flex gap-2">
         <div class="flex grow flex-col gap-2">
-          <Time class="text-6xl" :chrono="chrono"></Time>
+          <Time class="text-5xl" :chrono="chrono"></Time>
           <div v-if="chrono.state === 'initial'">Non démarré</div>
           <div v-if="chrono.state === 'started'">En cours</div>
           <div v-if="chrono.state === 'paused'">En pause</div>
@@ -37,6 +38,8 @@ const chrono = computed(() => chronos.value[route.params.index]);
           iconClass="size-16"
         />
       </div>
+
+      <Price :chrono class="text-5xl font-bold" />
 
       <div class="flex justify-end">
         <div>

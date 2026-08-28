@@ -46,6 +46,16 @@ export function stop(index) {
   chrono.offset = 0;
 }
 
+export function getMs(chrono) {
+  if (chrono.state === "started") {
+    const elapsed = Math.max(0, clock.value - chrono.started_at);
+    return chrono.offset + elapsed;
+  } else if (chrono.state === "paused") {
+    return chrono.offset;
+  }
+  return 0;
+}
+
 export function getBgClass(chrono) {
   return (
     {
