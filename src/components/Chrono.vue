@@ -5,7 +5,12 @@ defineProps({
 </script>
 
 <template>
-  <div :chrono="chrono" class="max-h-1/4 min-h-20 grow bg-white p-2">
-    {{ chrono.label }} ({{ chrono.id }})
+  <div
+    :chrono="chrono"
+    class="col-span-full grid h-full grow grid-cols-subgrid items-center bg-white p-2"
+  >
+    <div>{{ chrono.label }}</div>
+    <div></div>
+    <div>▶️</div>
   </div>
 </template>
