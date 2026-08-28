@@ -31,5 +31,12 @@ const time = computed(() => formatTime(ms.value));
 </script>
 
 <template>
-  <div class="tabular-nums">{{ time }}</div>
+  <div
+    class="tabular-nums"
+    :class="{
+      'opacity-20': chrono.state === 'initial',
+    }"
+  >
+    {{ time }}
+  </div>
 </template>

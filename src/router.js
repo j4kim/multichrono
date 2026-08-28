@@ -4,7 +4,7 @@ import ChronoView from "./views/ChronoView.vue";
 
 const routes = [
   { path: "/", component: HomeView },
-  { path: "/:chronoId", component: ChronoView },
+  { path: "/:index", component: ChronoView },
 ];
 
 export const router = createRouter({

@@ -30,19 +30,13 @@ const bgClass = computed(() => {
     :chrono="chrono"
     class="flex max-h-1/4 min-h-20 grow items-center justify-between p-6"
     :class="bgClass"
-    @click="$router.push(`/${chrono.id}`)"
+    @click="$router.push(`/${index}`)"
   >
     <div>
       <div class="text-xl font-light">
         {{ chrono.label }}
       </div>
-      <Time
-        class="text-4xl"
-        :chrono="chrono"
-        :class="{
-          'opacity-20': chrono.state === 'initial',
-        }"
-      ></Time>
+      <Time class="text-4xl" :chrono="chrono"></Time>
     </div>
     <div class="flex gap-2">
       <button
