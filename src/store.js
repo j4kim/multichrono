@@ -38,3 +38,10 @@ export function pause(index) {
   chrono.offset = chrono.offset + clock.value - chrono.started_at;
   chrono.state = "paused";
 }
+
+export function stop(index) {
+  updateClock();
+  const chrono = chronos.value[index];
+  chrono.state = "initial";
+  chrono.offset = 0;
+}
