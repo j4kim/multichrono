@@ -7,7 +7,7 @@ export function updateClock() {
   clock.value = Date.now();
 }
 
-setInterval(updateClock, 1000);
+setInterval(updateClock, 500);
 
 export function newChrono(label) {
   return {
