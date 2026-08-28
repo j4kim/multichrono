@@ -1,14 +1,6 @@
 <script setup>
-import { ref } from "vue";
-import { newChrono } from "./chrono";
 import Chrono from "./components/Chrono.vue";
-
-const chronos = ref([
-  newChrono("Cible 1"),
-  newChrono("Cible 2"),
-  newChrono("Cible 3"),
-  newChrono("Cible 4"),
-]);
+import { chronos } from "./store.js";
 </script>
 
 <template>
