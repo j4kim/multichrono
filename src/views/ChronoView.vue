@@ -1,5 +1,5 @@
 <script setup>
-import { ArrowLeftIcon, StopIcon } from "@heroicons/vue/24/solid";
+import { ArrowLeftIcon, ClockIcon, StopIcon } from "@heroicons/vue/24/solid";
 import { chronos, getBgClass, getColorClass, stop } from "../chronoStore.js";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
@@ -10,6 +10,17 @@ import Price from "../components/Price.vue";
 const route = useRoute();
 
 const chrono = computed(() => chronos.value[route.params.index]);
+
+function update() {
+  let minutes = NaN;
+  while (isNaN(minutes) || minutes < 0) {
+    minutes = prompt("Minutes");
+  }
+  minutes = +minutes;
+  const ms = minutes * 60000;
+  chrono.value.started_at = Date.now();
+  chrono.value.offset = ms;
+}
 </script>
 
 <template>
@@ -28,9 +39,19 @@ const chrono = computed(() => chronos.value[route.params.index]);
       <div class="flex gap-2">
         <div class="flex grow flex-col gap-2">
           <Time class="text-5xl" :chrono="chrono"></Time>
-          <div v-if="chrono.state === 'initial'">Non démarré</div>
-          <div v-if="chrono.state === 'started'">En cours</div>
-          <div v-if="chrono.state === 'paused'">En pause</div>
+          <div class="flex gap-2">
+            <button
+              class="flex items-center gap-1 rounded-full bg-white pr-2.5 pl-1.5"
+              :class="getColorClass(chrono)"
+              @click="update"
+            >
+              <ClockIcon class="inline size-4" />
+              modifier
+            </button>
+            <div v-if="chrono.state === 'initial'">Non démarré</div>
+            <div v-else-if="chrono.state === 'started'">En cours</div>
+            <div v-else-if="chrono.state === 'paused'">En pause</div>
+          </div>
         </div>
         <ChronoButtons :chrono iconClass="size-16" />
       </div>
