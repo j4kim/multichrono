@@ -25,23 +25,20 @@ export const chronos = useStorage("chronos", [
   newChrono("Cible 4"),
 ]);
 
-export function start(index) {
+export function start(chrono) {
   updateClock();
-  const chrono = chronos.value[index];
   chrono.started_at = clock.value;
   chrono.state = "started";
 }
 
-export function pause(index) {
+export function pause(chrono) {
   updateClock();
-  const chrono = chronos.value[index];
   chrono.offset = chrono.offset + clock.value - chrono.started_at;
   chrono.state = "paused";
 }
 
-export function stop(index) {
+export function stop(chrono) {
   updateClock();
-  const chrono = chronos.value[index];
   chrono.state = "initial";
   chrono.offset = 0;
 }

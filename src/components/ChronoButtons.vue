@@ -1,14 +1,9 @@
 <script setup>
-import {
-  PauseCircleIcon,
-  PlayCircleIcon,
-  StopCircleIcon,
-} from "@heroicons/vue/24/solid";
-import { pause, start, stop } from "../chronoStore";
+import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/vue/24/solid";
+import { pause, start } from "../chronoStore";
 
 const props = defineProps({
   chrono: Object,
-  index: [String, Number],
   iconClass: {
     type: String,
     default: "size-12",
@@ -20,11 +15,11 @@ const props = defineProps({
   <div class="flex gap-2">
     <button
       v-if="chrono.state === 'initial' || chrono.state === 'paused'"
-      @click.stop="start(index)"
+      @click.stop="start(chrono)"
     >
       <PlayCircleIcon :class="iconClass" />
     </button>
-    <button v-if="chrono.state === 'started'" @click.stop="pause(index)">
+    <button v-if="chrono.state === 'started'" @click.stop="pause(chrono)">
       <PauseCircleIcon :class="iconClass" />
     </button>
   </div>

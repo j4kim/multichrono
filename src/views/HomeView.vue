@@ -10,8 +10,8 @@ import { chronos } from "../chronoStore.js";
       <Chrono
         v-for="(chrono, index) in chronos"
         :key="chrono.id"
-        :chrono="chrono"
-        :index="index"
+        :chrono
+        :index
       />
     </div>
   </div>

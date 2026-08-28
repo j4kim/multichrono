@@ -32,11 +32,7 @@ const chrono = computed(() => chronos.value[route.params.index]);
           <div v-if="chrono.state === 'started'">En cours</div>
           <div v-if="chrono.state === 'paused'">En pause</div>
         </div>
-        <ChronoButtons
-          :chrono
-          :index="route.params.index"
-          iconClass="size-16"
-        />
+        <ChronoButtons :chrono iconClass="size-16" />
       </div>
 
       <Price :chrono class="text-5xl font-bold" />
@@ -47,7 +43,7 @@ const chrono = computed(() => chronos.value[route.params.index]);
             class="flex h-14 items-center gap-2 rounded-full bg-white px-6 pl-3 text-xl disabled:opacity-50"
             :class="getColorClass(chrono)"
             :disabled="chrono.state !== 'paused'"
-            @click="stop(route.params.index)"
+            @click="stop(chrono)"
           >
             <StopIcon class="inline size-9" />
             Terminer

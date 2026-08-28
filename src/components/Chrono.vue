@@ -24,6 +24,6 @@ const props = defineProps({
       <Time class="text-4xl" :chrono></Time>
       <Price class="text-3xl font-bold" :chrono></Price>
     </div>
-    <ChronoButtons :chrono :index />
+    <ChronoButtons :chrono />
   </div>
 </template>
