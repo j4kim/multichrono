@@ -4,6 +4,7 @@ import { chronos, getBgClass } from "../chronoStore.js";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";
+import ChronoButtons from "../components/ChronoButtons.vue";
 
 const route = useRoute();
 
@@ -18,8 +19,24 @@ const chrono = computed(() => chronos.value[route.params.index]);
       </RouterLink>
       {{ chrono?.label ?? "404" }}
     </header>
-    <div v-if="chrono" class="grow p-6" :class="getBgClass(chrono)">
-      <Time class="text-4xl" :chrono="chrono"></Time>
+    <div
+      v-if="chrono"
+      class="flex grow flex-col gap-2 p-6"
+      :class="getBgClass(chrono)"
+    >
+      <div class="flex gap-2">
+        <div class="flex grow flex-col gap-2">
+          <Time class="text-6xl" :chrono="chrono"></Time>
+          <div v-if="chrono.state === 'initial'">Non démarré</div>
+          <div v-if="chrono.state === 'started'">En cours</div>
+          <div v-if="chrono.state === 'paused'">En pause</div>
+        </div>
+        <ChronoButtons
+          :chrono
+          :index="route.params.index"
+          iconClass="size-16"
+        />
+      </div>
     </div>
   </div>
 </template>
