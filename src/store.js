@@ -25,3 +25,9 @@ export function start(index) {
   chrono.started_at = Date.now();
   chrono.state = "started";
 }
+
+export function pause(index) {
+  const chrono = chronos.value[index];
+  chrono.paused_at = Date.now();
+  chrono.state = "paused";
+}

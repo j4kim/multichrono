@@ -6,8 +6,7 @@ const props = defineProps({
   chrono: Object,
 });
 
-const time = computed(() => {
-  const ms = clock.value - props.chrono.started_at;
+function formatTime(ms) {
   const totalSeconds = Math.max(0, Math.floor(ms / 1000));
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -16,7 +15,18 @@ const time = computed(() => {
   return [hours, minutes, seconds]
     .map((unit) => String(unit).padStart(2, "0"))
     .join(":");
+}
+
+const ms = computed(() => {
+  if (props.chrono.state === "started") {
+    return clock.value - props.chrono.started_at;
+  } else if (props.chrono.state === "paused") {
+    return props.chrono.paused_at - props.chrono.started_at;
+  }
+  return 0;
 });
+
+const time = computed(() => formatTime(ms.value));
 </script>
 
 <template>
