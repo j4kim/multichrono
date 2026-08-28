@@ -55,3 +55,13 @@ export function getBgClass(chrono) {
     }[chrono.state] ?? "bg-red-700"
   );
 }
+
+export function getColorClass(chrono) {
+  return (
+    {
+      initial: "text-slate-900",
+      paused: "text-slate-800",
+      started: "text-cyan-900",
+    }[chrono.state] ?? "text-red-700"
+  );
+}

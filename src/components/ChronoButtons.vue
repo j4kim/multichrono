@@ -27,8 +27,5 @@ const props = defineProps({
     <button v-if="chrono.state === 'started'" @click.stop="pause(index)">
       <PauseCircleIcon :class="iconClass" />
     </button>
-    <button v-if="chrono.state === 'paused'" @click.stop="stop(index)">
-      <StopCircleIcon :class="iconClass" />
-    </button>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
-import { ArrowLeftIcon } from "@heroicons/vue/24/solid";
-import { chronos, getBgClass } from "../chronoStore.js";
+import { ArrowLeftIcon, StopIcon } from "@heroicons/vue/24/solid";
+import { chronos, getBgClass, getColorClass, stop } from "../chronoStore.js";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";
@@ -21,7 +21,7 @@ const chrono = computed(() => chronos.value[route.params.index]);
     </header>
     <div
       v-if="chrono"
-      class="flex grow flex-col gap-2 p-6"
+      class="flex grow flex-col gap-12 p-6"
       :class="getBgClass(chrono)"
     >
       <div class="flex gap-2">
@@ -36,6 +36,20 @@ const chrono = computed(() => chronos.value[route.params.index]);
           :index="route.params.index"
           iconClass="size-16"
         />
+      </div>
+
+      <div class="flex justify-end">
+        <div>
+          <button
+            class="flex h-14 items-center gap-2 rounded-full bg-white px-6 pl-3 text-xl disabled:opacity-50"
+            :class="getColorClass(chrono)"
+            :disabled="chrono.state !== 'paused'"
+            @click="stop(route.params.index)"
+          >
+            <StopIcon class="inline size-9" />
+            Terminer
+          </button>
+        </div>
       </div>
     </div>
   </div>
