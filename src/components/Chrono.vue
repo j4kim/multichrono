@@ -47,14 +47,14 @@ const bgClass = computed(() => {
     <div class="flex gap-2">
       <button
         v-if="chrono.state === 'initial' || chrono.state === 'paused'"
-        @click="start(index)"
+        @click.stop="start(index)"
       >
         <PlayCircleIcon class="size-12" />
       </button>
-      <button v-if="chrono.state === 'started'" @click="pause(index)">
+      <button v-if="chrono.state === 'started'" @click.stop="pause(index)">
         <PauseCircleIcon class="size-12" />
       </button>
-      <button v-if="chrono.state === 'paused'" @click="stop(index)">
+      <button v-if="chrono.state === 'paused'" @click.stop="stop(index)">
         <StopCircleIcon class="size-12" />
       </button>
     </div>
