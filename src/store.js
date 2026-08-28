@@ -9,21 +9,42 @@ export function updateClock() {
 
 setInterval(updateClock, 500);
 
-export function newChrono(label) {
-  return {
-    id: Date.now() + "." + Math.random(),
-    label,
-    state: "initial",
-    offset: 0,
-  };
+class Chrono {
+  constructor(label) {
+    this.id = Date.now() + "." + Math.random();
+    this.label = label;
+    this.state = "initial";
+    this.offset = 0;
+  }
+
+  static deserialize(obj) {
+    var c = new Chrono();
+    Object.keys(obj).forEach(function (key) {
+      c[key] = obj[key];
+    });
+    return c;
+  }
 }
 
-export const chronos = useStorage("chronos", [
-  newChrono("Cible 1"),
-  newChrono("Cible 2"),
-  newChrono("Cible 3"),
-  newChrono("Cible 4"),
-]);
+export const chronos = useStorage(
+  "chronos",
+  [
+    new Chrono("Cible 1"),
+    new Chrono("Cible 2"),
+    new Chrono("Cible 3"),
+    new Chrono("Cible 4"),
+  ],
+  undefined,
+  {
+    serializer: {
+      read: (v) => {
+        const jsonChronos = v ? JSON.parse(v) : [];
+        return jsonChronos.map((obj) => Chrono.deserialize(obj));
+      },
+      write: (v) => JSON.stringify(v),
+    },
+  },
+);
 
 export function start(index) {
   updateClock();
