@@ -3,7 +3,21 @@ import { ref } from "vue";
 
 export const clock = ref(Date.now());
 
-setInterval(() => (clock.value = Date.now()), 1000);
+export function updateClock() {
+  clock.value = Date.now();
+}
+
+export let clockInterval = null;
+
+export function startClock() {
+  updateClock();
+  if (clockInterval) {
+    clearInterval(clockInterval);
+  }
+  clockInterval = setInterval(updateClock, 1000);
+}
+
+startClock();
 
 export function newChrono(label) {
   return {
@@ -22,14 +36,15 @@ export const chronos = useStorage("chronos", [
 ]);
 
 export function start(index) {
+  startClock();
   const chrono = chronos.value[index];
-  chrono.started_at = Date.now();
+  chrono.started_at = clock.value;
   chrono.state = "started";
 }
 
 export function pause(index) {
+  startClock();
   const chrono = chronos.value[index];
-  chrono.paused_at = Date.now();
-  chrono.offset = chrono.offset + chrono.paused_at - chrono.started_at;
+  chrono.offset = chrono.offset + clock.value - chrono.started_at;
   chrono.state = "paused";
 }
