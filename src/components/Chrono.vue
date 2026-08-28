@@ -28,23 +28,33 @@ const bgClass = computed(() => {
 <template>
   <div
     :chrono="chrono"
-    class="max-h-1/4 min-h-20 grow p-2 text-2xl"
+    class="flex max-h-1/4 min-h-20 grow items-center justify-between p-6"
     :class="bgClass"
   >
-    {{ chrono.label }}
-    <Time :chrono="chrono"></Time>
+    <div>
+      <div class="text-xl font-light">
+        {{ chrono.label }}
+      </div>
+      <Time
+        class="text-4xl"
+        :chrono="chrono"
+        :class="{
+          'opacity-20': chrono.state === 'initial',
+        }"
+      ></Time>
+    </div>
     <div class="flex gap-2">
       <button
         v-if="chrono.state === 'initial' || chrono.state === 'paused'"
         @click="start(index)"
       >
-        <PlayCircleIcon class="size-8" />
+        <PlayCircleIcon class="size-12" />
       </button>
       <button v-if="chrono.state === 'started'" @click="pause(index)">
-        <PauseCircleIcon class="size-8" />
+        <PauseCircleIcon class="size-12" />
       </button>
       <button v-if="chrono.state === 'paused'" @click="stop(index)">
-        <StopCircleIcon class="size-8" />
+        <StopCircleIcon class="size-12" />
       </button>
     </div>
   </div>

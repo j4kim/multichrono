@@ -31,5 +31,5 @@ const time = computed(() => formatTime(ms.value));
 </script>
 
 <template>
-  <div>{{ time }}</div>
+  <div class="tabular-nums">{{ time }}</div>
 </template>
