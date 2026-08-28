@@ -45,3 +45,13 @@ export function stop(index) {
   chrono.state = "initial";
   chrono.offset = 0;
 }
+
+export function getBgClass(chrono) {
+  return (
+    {
+      initial: "bg-slate-900",
+      paused: "bg-slate-800",
+      started: "bg-cyan-900",
+    }[chrono.state] ?? "bg-red-700"
+  );
+}

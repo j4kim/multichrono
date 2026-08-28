@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { start, pause, stop } from "../chronoStore.js";
+import { start, pause, stop, getBgClass } from "../chronoStore.js";
 import Time from "./Time.vue";
 import {
   PauseCircleIcon,
@@ -13,23 +13,13 @@ const props = defineProps({
   chrono: Object,
   index: Number,
 });
-
-const bgClass = computed(() => {
-  return (
-    {
-      initial: "bg-slate-900",
-      paused: "bg-slate-800",
-      started: "bg-cyan-900",
-    }[props.chrono.state] ?? "bg-red-700"
-  );
-});
 </script>
 
 <template>
   <div
     :chrono="chrono"
     class="flex max-h-1/4 min-h-20 grow items-center justify-between p-6"
-    :class="bgClass"
+    :class="getBgClass(chrono)"
     @click="$router.push(`/${index}`)"
   >
     <div>

@@ -1,6 +1,6 @@
 <script setup>
 import { ArrowLeftIcon } from "@heroicons/vue/24/solid";
-import { chronos } from "../chronoStore.js";
+import { chronos, getBgClass } from "../chronoStore.js";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";
@@ -18,7 +18,7 @@ const chrono = computed(() => chronos.value[route.params.index]);
       </RouterLink>
       {{ chrono?.label ?? "404" }}
     </header>
-    <div class="grow bg-slate-900 p-6" v-if="chrono">
+    <div v-if="chrono" class="grow p-6" :class="getBgClass(chrono)">
       <Time class="text-4xl" :chrono="chrono"></Time>
     </div>
   </div>
