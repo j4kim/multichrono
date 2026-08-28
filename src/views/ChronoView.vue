@@ -1,6 +1,6 @@
 <script setup>
 import { ArrowLeftIcon } from "@heroicons/vue/24/solid";
-import { chronos } from "../store.js";
+import { chronos } from "../chronoStore.js";
 </script>
 
 <template>

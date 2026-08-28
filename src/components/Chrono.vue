@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { start, pause, stop } from "../store";
+import { start, pause, stop } from "../chronoStore.js";
 import Time from "./Time.vue";
 import {
   PauseCircleIcon,

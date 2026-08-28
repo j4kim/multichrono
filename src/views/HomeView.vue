@@ -1,6 +1,6 @@
 <script setup>
 import Chrono from "../components/Chrono.vue";
-import { chronos } from "../store.js";
+import { chronos } from "../chronoStore.js";
 </script>
 
 <template>
