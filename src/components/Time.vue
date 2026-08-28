@@ -19,9 +19,9 @@ function formatTime(ms) {
 
 const ms = computed(() => {
   if (props.chrono.state === "started") {
-    return clock.value - props.chrono.started_at;
+    return props.chrono.offset + clock.value - props.chrono.started_at;
   } else if (props.chrono.state === "paused") {
-    return props.chrono.paused_at - props.chrono.started_at;
+    return props.chrono.offset;
   }
   return 0;
 });

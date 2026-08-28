@@ -10,6 +10,7 @@ export function newChrono(label) {
     id: Date.now() + "." + Math.random(),
     label,
     state: "initial",
+    offset: 0,
   };
 }
 
@@ -29,5 +30,6 @@ export function start(index) {
 export function pause(index) {
   const chrono = chronos.value[index];
   chrono.paused_at = Date.now();
+  chrono.offset = chrono.offset + chrono.paused_at - chrono.started_at;
   chrono.state = "paused";
 }
