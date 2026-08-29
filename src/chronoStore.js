@@ -45,6 +45,10 @@ export function stop(chrono) {
   chrono.offset = 0;
 }
 
+export function remove(index) {
+  chronos.value.splice(index, 1);
+}
+
 export function getMs(chrono) {
   if (chrono.state === "started") {
     const elapsed = Math.max(0, clock.value - chrono.started_at);
