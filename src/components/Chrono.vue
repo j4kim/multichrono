@@ -15,7 +15,11 @@ const el = useTemplateRef("el");
 
 const { lengthX } = useSwipe(el, {
   onSwipeEnd() {
-    if (lengthX.value > 200 && confirm("Terminer ?")) {
+    if (
+      lengthX.value > 200 &&
+      props.chrono.state !== "initial" &&
+      confirm("Terminer ?")
+    ) {
       stop(props.chrono);
     }
   },
