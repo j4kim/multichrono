@@ -72,3 +72,13 @@ export function getColorClass(chrono) {
     }[chrono.state] ?? "text-red-700"
   );
 }
+
+export function getStateString(chrono) {
+  return (
+    {
+      initial: "Non démarré",
+      paused: "En pause",
+      started: "En cours",
+    }[chrono.state] ?? "?"
+  );
+}

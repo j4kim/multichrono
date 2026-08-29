@@ -1,6 +1,12 @@
 <script setup>
 import { ArrowLeftIcon, ClockIcon, StopIcon } from "@heroicons/vue/24/solid";
-import { chronos, getBgClass, getColorClass, stop } from "../chronoStore.js";
+import {
+  chronos,
+  getBgClass,
+  getColorClass,
+  getStateString,
+  stop,
+} from "../chronoStore.js";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";
@@ -38,11 +44,7 @@ function update() {
       <div class="flex gap-2">
         <div class="flex grow flex-col gap-2">
           <Time class="text-5xl" :chrono="chrono"></Time>
-          <div class="flex gap-2">
-            <div v-if="chrono.state === 'initial'">Non démarré</div>
-            <div v-else-if="chrono.state === 'started'">En cours</div>
-            <div v-else-if="chrono.state === 'paused'">En pause</div>
-          </div>
+          <div>{{ getStateString(chrono) }}</div>
         </div>
         <ChronoButtons :chrono iconClass="size-16" />
       </div>
