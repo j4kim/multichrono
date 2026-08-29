@@ -1,8 +1,8 @@
 <script setup>
-import { ArrowLeftIcon, XMarkIcon } from "@heroicons/vue/24/solid";
+import { ArrowLeftIcon, PlusIcon, XMarkIcon } from "@heroicons/vue/24/solid";
 import { settings } from "../settingsStore.js";
 import { ref } from "vue";
-import { chronos, getStateString, remove } from "../chronoStore.js";
+import { chronos, getStateString, newChrono, remove } from "../chronoStore.js";
 
 const applying = ref(false);
 
@@ -20,6 +20,11 @@ function confirmAndRemove(index) {
   if (confirm("Supprimer le chrono ?")) {
     remove(index);
   }
+}
+
+function addChrono() {
+  const label = prompt("Nom");
+  chronos.value.push(newChrono(label));
 }
 </script>
 
@@ -79,6 +84,13 @@ function confirmAndRemove(index) {
             </td>
           </tr>
         </table>
+        <button
+          class="my-2 flex items-center gap-1 rounded-full bg-white p-0.5 pr-4 pl-2 text-slate-950"
+          @click="addChrono"
+        >
+          <PlusIcon class="inline size-5" />
+          <span>Ajouter un chrono</span>
+        </button>
       </div>
     </div>
   </div>
