@@ -5,7 +5,7 @@ import { chronos } from "../chronoStore.js";
 
 <template>
   <div class="flex min-h-dvh flex-col">
-    <header class="flex h-12 items-center p-2">multichrono</header>
+    <header class="flex h-12 items-center p-2 px-4">multichrono</header>
     <div class="flex grow flex-col gap-1">
       <Chrono
         v-for="(chrono, index) in chronos"

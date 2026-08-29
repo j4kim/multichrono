@@ -12,12 +12,11 @@ const route = useRoute();
 const chrono = computed(() => chronos.value[route.params.index]);
 
 function update() {
-  let minutes = NaN;
-  while (isNaN(minutes) || minutes < 0) {
-    minutes = prompt("Minutes");
+  const minutes = prompt("Minutes");
+  if (minutes === null || minutes === "" || isNaN(minutes) || minutes < 0) {
+    return;
   }
-  minutes = +minutes;
-  const ms = minutes * 60000;
+  const ms = +minutes * 60000;
   chrono.value.started_at = Date.now();
   chrono.value.offset = ms;
 }
@@ -25,7 +24,7 @@ function update() {
 
 <template>
   <div class="flex min-h-dvh flex-col">
-    <header class="flex h-12 items-center gap-4 p-2">
+    <header class="flex h-12 items-center gap-4 p-2 px-4">
       <RouterLink to="/">
         <ArrowLeftIcon class="size-6" />
       </RouterLink>
@@ -40,14 +39,6 @@ function update() {
         <div class="flex grow flex-col gap-2">
           <Time class="text-5xl" :chrono="chrono"></Time>
           <div class="flex gap-2">
-            <button
-              class="flex items-center gap-1 rounded-full bg-white pr-2.5 pl-1.5"
-              :class="getColorClass(chrono)"
-              @click="update"
-            >
-              <ClockIcon class="inline size-4" />
-              modifier
-            </button>
             <div v-if="chrono.state === 'initial'">Non démarré</div>
             <div v-else-if="chrono.state === 'started'">En cours</div>
             <div v-else-if="chrono.state === 'paused'">En pause</div>
@@ -92,6 +83,17 @@ function update() {
           type="number"
         />
       </label>
+
+      <div>
+        <button
+          class="flex items-center gap-1 rounded-full bg-white py-1 pr-4 pl-2"
+          :class="getColorClass(chrono)"
+          @click="update"
+        >
+          <ClockIcon class="inline size-5" />
+          Modifier manuellement
+        </button>
+      </div>
     </div>
   </div>
 </template>
