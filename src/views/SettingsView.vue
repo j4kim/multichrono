@@ -70,7 +70,11 @@ function addChrono() {
                 {{ chrono.label }}
               </RouterLink>
             </td>
-            <td class="pr-2">CHF {{ chrono.hourlyRate }}</td>
+            <td class="pr-2">
+              <span v-if="chrono.hourlyRate">
+                CHF {{ chrono.hourlyRate }}
+              </span>
+            </td>
             <td class="pr-2">{{ getStateString(chrono) }}</td>
             <td>
               <button
