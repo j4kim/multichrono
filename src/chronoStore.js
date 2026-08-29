@@ -1,5 +1,6 @@
 import { useStorage } from "@vueuse/core";
 import { ref } from "vue";
+import { settings } from "./settingsStore";
 
 export const clock = ref(Date.now());
 
@@ -15,7 +16,7 @@ export function newChrono(label) {
     label,
     state: "initial",
     offset: 0,
-    hourlyRate: 30,
+    hourlyRate: settings.value.hourlyRate,
   };
 }
 
