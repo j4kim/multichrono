@@ -69,8 +69,7 @@ function update() {
         Nom
         <input
           v-model="chrono.label"
-          class="mt-1 w-full border-white/20 focus:bg-black/5 focus:ring-0"
-          :class="getBgClass(chrono)"
+          class="mt-1 w-full border-white/20 bg-transparent focus:bg-black/5 focus:ring-0"
         />
       </label>
 
@@ -78,8 +77,7 @@ function update() {
         Tarif horaire
         <input
           v-model="chrono.hourlyRate"
-          class="mt-1 w-full border-white/20 focus:bg-black/5 focus:ring-0"
-          :class="getBgClass(chrono)"
+          class="mt-1 w-full border-white/20 bg-transparent focus:bg-black/5 focus:ring-0"
           type="number"
         />
       </label>
