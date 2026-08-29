@@ -2,7 +2,12 @@
 import { ArrowLeftIcon, PlusIcon, XMarkIcon } from "@heroicons/vue/24/solid";
 import { settings } from "../settingsStore.js";
 import { ref } from "vue";
-import { chronos, getStateString, newChrono, remove } from "../chronoStore.js";
+import {
+  chronos,
+  confirmAndRemove,
+  getStateString,
+  newChrono,
+} from "../chronoStore.js";
 
 const applying = ref(false);
 
@@ -14,12 +19,6 @@ function apply() {
   setTimeout(() => {
     applying.value = false;
   }, 1000);
-}
-
-function confirmAndRemove(index) {
-  if (confirm("Supprimer le chrono ?")) {
-    remove(index);
-  }
 }
 
 function addChrono() {
@@ -66,7 +65,7 @@ function addChrono() {
             <td class="pr-2">
               <RouterLink
                 :to="`/chrono/${index}`"
-                class="font-bold text-slate-400 hover:underline"
+                class="font-bold text-cyan-600 hover:underline"
               >
                 {{ chrono.label }}
               </RouterLink>
@@ -75,7 +74,7 @@ function addChrono() {
             <td class="pr-2">{{ getStateString(chrono) }}</td>
             <td>
               <button
-                class="my-2 flex items-center gap-1 rounded-full bg-white p-0.5 text-slate-950 sm:pr-4 sm:pl-2"
+                class="my-2 flex items-center gap-1 rounded-full bg-red-400 p-0.5 text-slate-950 sm:pr-4 sm:pl-2"
                 @click="confirmAndRemove(index)"
               >
                 <XMarkIcon class="inline size-5" />

@@ -1,19 +1,26 @@
 <script setup>
-import { ArrowLeftIcon, ClockIcon, StopIcon } from "@heroicons/vue/24/solid";
+import {
+  ArrowLeftIcon,
+  ClockIcon,
+  StopIcon,
+  XMarkIcon,
+} from "@heroicons/vue/24/solid";
 import {
   chronos,
+  confirmAndRemove,
   getBgClass,
   getColorClass,
   getStateString,
   stop,
 } from "../chronoStore.js";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";
 import ChronoButtons from "../components/ChronoButtons.vue";
 import Price from "../components/Price.vue";
 
 const route = useRoute();
+const router = useRouter();
 
 const chrono = computed(() => chronos.value[route.params.index]);
 
@@ -26,6 +33,12 @@ function update() {
   chrono.value.started_at = Date.now();
   chrono.value.offset = ms;
 }
+
+function confirmAndRemoveAndGoHome() {
+  if (confirmAndRemove(route.params.index)) {
+    router.push("/");
+  }
+}
 </script>
 
 <template>
@@ -36,6 +49,7 @@ function update() {
       </RouterLink>
       {{ chrono?.label ?? "404" }}
     </header>
+
     <div
       v-if="chrono"
       class="flex grow flex-col gap-12 p-6"
@@ -92,6 +106,17 @@ function update() {
         >
           <ClockIcon class="inline size-5" />
           Modifier manuellement
+        </button>
+      </div>
+
+      <div class="mb-12">
+        <button
+          class="flex items-center gap-1 rounded-full bg-red-400 py-1 pr-4 pl-2"
+          :class="getColorClass(chrono)"
+          @click="confirmAndRemoveAndGoHome"
+        >
+          <XMarkIcon class="inline size-5" />
+          Supprimer
         </button>
       </div>
     </div>

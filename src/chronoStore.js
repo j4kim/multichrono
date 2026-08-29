@@ -49,6 +49,14 @@ export function remove(index) {
   chronos.value.splice(index, 1);
 }
 
+export function confirmAndRemove(index) {
+  const confirmed = confirm("Supprimer le chrono ?");
+  if (confirmed) {
+    remove(index);
+  }
+  return confirmed;
+}
+
 export function getMs(chrono) {
   if (chrono.state === "started") {
     const elapsed = Math.max(0, clock.value - chrono.started_at);
