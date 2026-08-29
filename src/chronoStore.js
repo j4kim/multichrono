@@ -15,6 +15,7 @@ export function newChrono(label) {
     label,
     state: "initial",
     offset: 0,
+    hourlyRate: 30,
   };
 }
 

@@ -71,6 +71,27 @@ function update() {
           </button>
         </div>
       </div>
+
+      <hr />
+
+      <label class="block">
+        Nom
+        <input
+          v-model="chrono.label"
+          class="mt-1 w-full border-white/20 focus:bg-black/5 focus:ring-0"
+          :class="getBgClass(chrono)"
+        />
+      </label>
+
+      <label class="block">
+        Tarif horaire
+        <input
+          v-model="chrono.hourlyRate"
+          class="mt-1 w-full border-white/20 focus:bg-black/5 focus:ring-0"
+          :class="getBgClass(chrono)"
+          type="number"
+        />
+      </label>
     </div>
   </div>
 </template>

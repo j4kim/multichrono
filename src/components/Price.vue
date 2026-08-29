@@ -9,7 +9,9 @@ const props = defineProps({
 const price = computed(() => {
   const ms = getMs(props.chrono);
   const hours = ms / 3600000;
-  const hourlyRate = 30;
+  const hourlyRate = isNaN(props.chrono.hourlyRate)
+    ? 0
+    : props.chrono.hourlyRate;
   return Math.floor(hours * hourlyRate);
 });
 </script>
