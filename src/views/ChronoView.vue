@@ -12,7 +12,7 @@ import {
   getColorClass,
   getStateString,
   stop,
-} from "../chronoStore.js";
+} from "../store.js";
 import { useRoute, useRouter } from "vue-router";
 import { computed } from "vue";
 import Time from "../components/Time.vue";

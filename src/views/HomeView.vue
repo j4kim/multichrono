@@ -1,6 +1,6 @@
 <script setup>
 import Chrono from "../components/Chrono.vue";
-import { chronos } from "../chronoStore.js";
+import { chronos } from "../store.js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 

@@ -1,14 +1,18 @@
 import { useStorage } from "@vueuse/core";
 import { ref } from "vue";
-import { settings } from "./settingsStore";
 
-export const clock = ref(Date.now());
+// States
 
-export function updateClock() {
-  clock.value = Date.now();
-}
+export const settings = useStorage("settings", {
+  hourlyRate: 30,
+});
 
-setInterval(updateClock, 500);
+export const chronos = useStorage("chronos", [
+  newChrono("Cible 1"),
+  newChrono("Cible 2"),
+  newChrono("Cible 3"),
+  newChrono("Cible 4"),
+]);
 
 export function newChrono(label) {
   return {
@@ -20,12 +24,17 @@ export function newChrono(label) {
   };
 }
 
-export const chronos = useStorage("chronos", [
-  newChrono("Cible 1"),
-  newChrono("Cible 2"),
-  newChrono("Cible 3"),
-  newChrono("Cible 4"),
-]);
+// Clock
+
+export const clock = ref(Date.now());
+
+export function updateClock() {
+  clock.value = Date.now();
+}
+
+setInterval(updateClock, 500);
+
+// Chrono management
 
 export function start(chrono) {
   updateClock();

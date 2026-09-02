@@ -1,5 +1,5 @@
 <script setup>
-import { getBgClass, stop } from "../chronoStore.js";
+import { getBgClass, stop } from "../store.js";
 import Time from "./Time.vue";
 import ChronoButtons from "./ChronoButtons.vue";
 import Price from "./Price.vue";

@@ -1,13 +1,13 @@
 <script setup>
 import { ArrowLeftIcon, PlusIcon, XMarkIcon } from "@heroicons/vue/24/solid";
-import { settings } from "../settingsStore.js";
+import { settings } from "../store.js";
 import { ref } from "vue";
 import {
   chronos,
   confirmAndRemove,
   getStateString,
   newChrono,
-} from "../chronoStore.js";
+} from "../store.js";
 
 const applying = ref(false);
 

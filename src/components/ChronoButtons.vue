@@ -1,6 +1,6 @@
 <script setup>
 import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/vue/24/solid";
-import { pause, start } from "../chronoStore";
+import { pause, start } from "../store";
 
 const props = defineProps({
   chrono: Object,

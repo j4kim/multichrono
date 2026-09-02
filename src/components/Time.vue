@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { getMs } from "../chronoStore";
+import { getMs } from "../store";
 
 const props = defineProps({
   chrono: Object,
