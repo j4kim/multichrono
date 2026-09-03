@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 // States
 
-export const settings = useStorage("settings", {
+export const settings = useStorage("settings-v01", {
   hourlyRate: 30,
 });
 
@@ -11,7 +11,7 @@ export function newChronoId() {
   return Date.now() + "." + Math.random();
 }
 
-export const chronos = useStorage("chronos", {
+export const chronos = useStorage("chronos-v01", {
   [newChronoId()]: newChrono(null),
 });
 
