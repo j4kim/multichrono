@@ -11,7 +11,7 @@ const hourlyRate = computed(() =>
 );
 
 const price = computed(() => {
-  const ms = getMs(props.chrono);
+  const ms = Math.max(0, getMs(props.chrono));
   const hours = ms / 3600000;
   return Math.floor(hours * hourlyRate.value);
 });
