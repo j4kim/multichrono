@@ -45,7 +45,7 @@ function confirmAndRemoveAndGoHome() {
   <div class="flex min-h-dvh flex-col">
     <header class="flex h-12 items-center gap-4 p-2 px-4">
       <RouterLink to="/">
-        <ArrowLeftIcon class="size-6" />
+        <ArrowLeftIcon class="size-6 hover:text-cyan-500" />
       </RouterLink>
       {{ chrono ? chrono.label : 404 }}
     </header>
@@ -68,7 +68,7 @@ function confirmAndRemoveAndGoHome() {
       <div class="flex justify-end">
         <div>
           <button
-            class="flex h-14 items-center gap-2 rounded-full bg-white px-6 pl-3 text-xl disabled:opacity-50"
+            class="flex h-14 cursor-pointer items-center gap-2 rounded-full bg-white px-6 pl-3 text-xl hover:bg-cyan-500 disabled:opacity-50"
             :class="getColorClass(chrono)"
             :disabled="chrono.state !== 'paused'"
             @click="stop(chrono)"
@@ -100,7 +100,7 @@ function confirmAndRemoveAndGoHome() {
 
       <div>
         <button
-          class="flex items-center gap-1 rounded-full bg-white py-1 pr-4 pl-2"
+          class="flex cursor-pointer items-center gap-1 rounded-full bg-white py-1 pr-4 pl-2 hover:bg-cyan-500"
           :class="getColorClass(chrono)"
           @click="update"
         >
@@ -111,7 +111,7 @@ function confirmAndRemoveAndGoHome() {
 
       <div class="mb-12">
         <button
-          class="flex items-center gap-1 rounded-full bg-red-400 py-1 pr-4 pl-2"
+          class="flex cursor-pointer items-center gap-1 rounded-full bg-red-400 py-1 pr-4 pl-2 hover:bg-red-600 hover:text-black"
           :class="getColorClass(chrono)"
           @click="confirmAndRemoveAndGoHome"
         >

@@ -9,7 +9,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
     <header class="flex h-12 items-center justify-between p-2 px-4">
       multichrono
       <RouterLink to="/settings">
-        <Cog6ToothIcon class="size-6" />
+        <Cog6ToothIcon class="size-6 hover:text-cyan-500" />
       </RouterLink>
     </header>
     <div class="flex grow flex-col gap-1">

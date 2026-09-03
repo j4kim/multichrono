@@ -17,10 +17,14 @@ const props = defineProps({
       v-if="chrono.state === 'initial' || chrono.state === 'paused'"
       @click.stop="start(chrono)"
     >
-      <PlayCircleIcon :class="iconClass" />
+      <PlayCircleIcon
+        :class="[iconClass, 'cursor-pointer hover:text-cyan-500']"
+      />
     </button>
     <button v-if="chrono.state === 'started'" @click.stop="pause(chrono)">
-      <PauseCircleIcon :class="iconClass" />
+      <PauseCircleIcon
+        :class="[iconClass, 'cursor-pointer hover:text-cyan-500']"
+      />
     </button>
   </div>
 </template>
