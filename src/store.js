@@ -32,7 +32,7 @@ export function updateClock() {
   clock.value = Date.now();
 }
 
-setInterval(updateClock, 500);
+setInterval(updateClock, 1000);
 
 // Chrono management
 
