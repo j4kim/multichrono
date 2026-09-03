@@ -6,7 +6,7 @@ const props = defineProps({
   chrono: Object,
 });
 
-function formatTime(ms) {
+function formatAbsTime(ms) {
   const totalSeconds = Math.max(0, Math.floor(ms / 1000));
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -15,6 +15,13 @@ function formatTime(ms) {
   return [hours, minutes, seconds]
     .map((unit) => String(unit).padStart(2, "0"))
     .join(":");
+}
+
+function formatTime(ms) {
+  const negative = ms < 0;
+  const absMs = Math.abs(ms);
+  const absTime = formatAbsTime(absMs);
+  return negative ? `-${absTime}` : absTime;
 }
 
 const time = computed(() => formatTime(getMs(props.chrono)));

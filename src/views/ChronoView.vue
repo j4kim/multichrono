@@ -26,7 +26,7 @@ const chrono = computed(() => chronos.value[route.params.index]);
 
 function update() {
   const minutes = prompt("Minutes");
-  if (minutes === null || minutes === "" || isNaN(minutes) || minutes < 0) {
+  if (minutes === null || minutes === "" || isNaN(minutes)) {
     return;
   }
   const ms = +minutes * 60000;
