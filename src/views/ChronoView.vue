@@ -45,7 +45,7 @@ function confirmAndRemoveAndGoHome() {
   <div class="flex min-h-dvh flex-col">
     <header class="flex h-12 items-center gap-4 p-2 px-4">
       <RouterLink to="/">
-        <ArrowLeftIcon class="size-6 hover:text-cyan-500" />
+        <ArrowLeftIcon class="link size-6" />
       </RouterLink>
       {{ chrono ? chrono.label : 404 }}
     </header>
@@ -68,7 +68,7 @@ function confirmAndRemoveAndGoHome() {
       <div class="flex justify-end">
         <div>
           <button
-            class="flex h-14 cursor-pointer items-center gap-2 rounded-full bg-white px-6 pl-3 text-xl hover:bg-cyan-500 disabled:opacity-50"
+            class="btn h-14 px-6! pl-5! text-xl"
             :class="getColorClass(chrono)"
             :disabled="chrono.state !== 'paused'"
             @click="stop(chrono)"
@@ -83,35 +83,24 @@ function confirmAndRemoveAndGoHome() {
 
       <label class="block">
         Nom
-        <input
-          v-model="chrono.label"
-          class="mt-1 w-full border-white/20 bg-transparent focus:bg-black/5 focus:ring-0"
-        />
+        <input v-model="chrono.label" class="input" />
       </label>
 
       <label class="block">
         Tarif horaire
-        <input
-          v-model="chrono.hourlyRate"
-          class="mt-1 w-full border-white/20 bg-transparent focus:bg-black/5 focus:ring-0"
-          type="number"
-        />
+        <input v-model="chrono.hourlyRate" class="input" type="number" />
       </label>
 
       <div>
-        <button
-          class="flex cursor-pointer items-center gap-1 rounded-full bg-white py-1 pr-4 pl-2 hover:bg-cyan-500"
-          :class="getColorClass(chrono)"
-          @click="update"
-        >
-          <ClockIcon class="inline size-5" />
+        <button class="btn" :class="getColorClass(chrono)" @click="update">
+          <ClockIcon class="-ml-2 inline size-5" />
           Modifier manuellement
         </button>
       </div>
 
       <div class="mb-12">
         <button
-          class="flex cursor-pointer items-center gap-1 rounded-full bg-red-400 py-1 pr-4 pl-2 hover:bg-red-600 hover:text-black"
+          class="btn bg-red-400! hover:bg-red-600! hover:text-black!"
           :class="getColorClass(chrono)"
           @click="confirmAndRemoveAndGoHome"
         >

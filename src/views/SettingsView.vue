@@ -47,11 +47,7 @@ function addChrono() {
           />
         </label>
         <div class="mt-2 flex items-center gap-2">
-          <button
-            class="flex cursor-pointer items-center gap-1 rounded-full bg-white px-4 py-1 text-slate-950 hover:bg-cyan-500 disabled:opacity-50"
-            @click="apply"
-            :disabled="applying"
-          >
+          <button class="btn" @click="apply" :disabled="applying">
             Appliquer à tous les chronos
           </button>
           <span v-if="applying" class="text-xl">👌</span>
@@ -77,20 +73,14 @@ function addChrono() {
             </td>
             <td class="pr-2">{{ getStateString(chrono) }}</td>
             <td>
-              <button
-                class="my-2 flex cursor-pointer items-center gap-1 rounded-full bg-red-400 p-0.5 text-slate-950 hover:bg-red-600 hover:text-black sm:pr-4 sm:pl-2"
-                @click="confirmAndRemove(id)"
-              >
+              <button class="red-btn my-2" @click="confirmAndRemove(id)">
                 <XMarkIcon class="inline size-5" />
                 <span class="hidden sm:inline">Supprimer</span>
               </button>
             </td>
           </tr>
         </table>
-        <button
-          class="my-2 flex cursor-pointer items-center gap-1 rounded-full bg-white p-0.5 pr-4 pl-2 text-slate-950 hover:bg-cyan-500"
-          @click="addChrono"
-        >
+        <button class="btn my-2" @click="addChrono">
           <PlusIcon class="inline size-5" />
           <span>Ajouter un chrono</span>
         </button>
