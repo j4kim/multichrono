@@ -47,7 +47,7 @@ function confirmAndRemoveAndGoHome() {
       <RouterLink to="/">
         <ArrowLeftIcon class="size-6" />
       </RouterLink>
-      {{ chrono?.label ?? "404" }}
+      {{ chrono ? chrono.label : 404 }}
     </header>
 
     <div
