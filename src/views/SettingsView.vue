@@ -42,7 +42,7 @@ function addChrono() {
           Tarif horaire par défaut
           <input
             v-model="settings.hourlyRate"
-            class="mt-1 w-full border-white/20 bg-transparent focus:bg-black/5 focus:ring-0"
+            class="input mt-1"
             type="number"
           />
         </label>
@@ -52,6 +52,17 @@ function addChrono() {
           </button>
           <span v-if="applying" class="text-xl">👌</span>
         </div>
+      </div>
+
+      <div>
+        <label class="block">
+          Valeur du chrono au démarrage (en minutes)
+          <input
+            v-model="settings.startOffsetMinutes"
+            class="input mt-1"
+            type="number"
+          />
+        </label>
       </div>
 
       <div>

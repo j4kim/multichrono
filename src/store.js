@@ -1,11 +1,16 @@
 import { useStorage } from "@vueuse/core";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 // States
 
 export const settings = useStorage("settings-v01", {
   hourlyRate: 30,
+  startOffsetMinutes: 0,
 });
+
+export const startOffsetMs = computed(
+  () => (settings.value.startOffsetMinutes ?? 0) * 60000,
+);
 
 export function newChronoId() {
   return Date.now() + "." + Math.random();
@@ -19,7 +24,7 @@ export function newChrono(label) {
   return {
     label,
     state: "initial",
-    offset: 0,
+    offset: startOffsetMs.value,
     hourlyRate: settings.value.hourlyRate,
   };
 }
@@ -51,7 +56,7 @@ export function pause(chrono) {
 export function stop(chrono) {
   updateClock();
   chrono.state = "initial";
-  chrono.offset = 0;
+  chrono.offset = startOffsetMs.value;
 }
 
 export function remove(id) {
