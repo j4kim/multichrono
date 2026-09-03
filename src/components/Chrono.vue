@@ -8,7 +8,7 @@ import { useSwipe } from "@vueuse/core";
 
 const props = defineProps({
   chrono: Object,
-  index: Number,
+  id: String,
 });
 
 const el = useTemplateRef("el");
@@ -32,7 +32,7 @@ const { lengthX } = useSwipe(el, {
     :chrono="chrono"
     class="flex h-40 grow items-center justify-between px-6 py-1"
     :class="getBgClass(chrono)"
-    @click="$router.push(`/chrono/${index}`)"
+    @click="$router.push(`/chrono/${id}`)"
   >
     <div>
       <div class="text-xl font-light">

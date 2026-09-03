@@ -5,7 +5,7 @@ import SettingsView from "./views/SettingsView.vue";
 
 const routes = [
   { path: "/", component: HomeView },
-  { path: "/chrono/:index", component: ChronoView },
+  { path: "/chrono/:id", component: ChronoView },
   { path: "/settings", component: SettingsView },
 ];
 

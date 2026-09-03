@@ -7,16 +7,16 @@ export const settings = useStorage("settings", {
   hourlyRate: 30,
 });
 
-export const chronos = useStorage("chronos", [
-  newChrono("Cible 1"),
-  newChrono("Cible 2"),
-  newChrono("Cible 3"),
-  newChrono("Cible 4"),
-]);
+export function newChronoId() {
+  return Date.now() + "." + Math.random();
+}
+
+export const chronos = useStorage("chronos", {
+  [newChronoId()]: newChrono(null),
+});
 
 export function newChrono(label) {
   return {
-    id: Date.now() + "." + Math.random(),
     label,
     state: "initial",
     offset: 0,
@@ -54,14 +54,18 @@ export function stop(chrono) {
   chrono.offset = 0;
 }
 
-export function remove(index) {
-  chronos.value.splice(index, 1);
+export function remove(id) {
+  delete chronos.value[id];
 }
 
-export function confirmAndRemove(index) {
+export function add(label) {
+  chronos.value[newChronoId()] = newChrono(label);
+}
+
+export function confirmAndRemove(id) {
   const confirmed = confirm("Supprimer le chrono ?");
   if (confirmed) {
-    remove(index);
+    remove(id);
   }
   return confirmed;
 }

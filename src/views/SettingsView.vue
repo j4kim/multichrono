@@ -1,18 +1,18 @@
 <script setup>
 import { ArrowLeftIcon, PlusIcon, XMarkIcon } from "@heroicons/vue/24/solid";
-import { settings } from "../store.js";
-import { ref } from "vue";
 import {
+  add,
+  settings,
   chronos,
   confirmAndRemove,
   getStateString,
-  newChrono,
 } from "../store.js";
+import { ref } from "vue";
 
 const applying = ref(false);
 
 function apply() {
-  chronos.value.forEach(
+  Object.values(chronos.value).forEach(
     (chrono) => (chrono.hourlyRate = settings.value.hourlyRate),
   );
   applying.value = true;
@@ -23,7 +23,7 @@ function apply() {
 
 function addChrono() {
   const label = prompt("Nom");
-  chronos.value.push(newChrono(label));
+  add(label);
 }
 </script>
 
@@ -61,10 +61,10 @@ function addChrono() {
       <div>
         <div>Chronos</div>
         <table class="mt-1 w-full">
-          <tr v-for="(chrono, index) in chronos">
+          <tr v-for="(chrono, id) in chronos">
             <td class="pr-2">
               <RouterLink
-                :to="`/chrono/${index}`"
+                :to="`/chrono/${id}`"
                 class="font-bold text-cyan-600 hover:underline"
               >
                 {{ chrono.label }}
@@ -79,7 +79,7 @@ function addChrono() {
             <td>
               <button
                 class="my-2 flex items-center gap-1 rounded-full bg-red-400 p-0.5 text-slate-950 sm:pr-4 sm:pl-2"
-                @click="confirmAndRemove(index)"
+                @click="confirmAndRemove(id)"
               >
                 <XMarkIcon class="inline size-5" />
                 <span class="hidden sm:inline">Supprimer</span>

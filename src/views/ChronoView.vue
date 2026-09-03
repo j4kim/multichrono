@@ -22,7 +22,7 @@ import Price from "../components/Price.vue";
 const route = useRoute();
 const router = useRouter();
 
-const chrono = computed(() => chronos.value[route.params.index]);
+const chrono = computed(() => chronos.value[route.params.id]);
 
 function update() {
   const minutes = prompt("Minutes");
@@ -35,7 +35,7 @@ function update() {
 }
 
 function confirmAndRemoveAndGoHome() {
-  if (confirmAndRemove(route.params.index)) {
+  if (confirmAndRemove(route.params.id)) {
     router.push("/");
   }
 }

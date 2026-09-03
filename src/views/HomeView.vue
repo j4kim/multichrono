@@ -13,12 +13,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </header>
     <div class="flex grow flex-col gap-1">
-      <Chrono
-        v-for="(chrono, index) in chronos"
-        :key="chrono.id"
-        :chrono
-        :index
-      />
+      <Chrono v-for="(chrono, id) in chronos" :key="id" :chrono :id />
     </div>
   </div>
 </template>
