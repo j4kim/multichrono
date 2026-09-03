@@ -28,7 +28,7 @@ function addChrono() {
 </script>
 
 <template>
-  <div class="flex min-h-dvh flex-col">
+  <div class="flex flex-col">
     <header class="flex h-12 items-center gap-4 p-2 px-4">
       <RouterLink to="/">
         <ArrowLeftIcon class="size-6" />

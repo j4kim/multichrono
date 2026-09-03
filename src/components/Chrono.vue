@@ -30,7 +30,7 @@ const { lengthX } = useSwipe(el, {
   <div
     ref="el"
     :chrono="chrono"
-    class="flex max-h-1/4 min-h-20 grow items-center justify-between px-6 py-1"
+    class="flex h-40 grow items-center justify-between px-6 py-1"
     :class="getBgClass(chrono)"
     @click="$router.push(`/chrono/${index}`)"
   >

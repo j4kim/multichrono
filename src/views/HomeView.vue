@@ -5,7 +5,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>
-  <div class="flex min-h-dvh flex-col">
+  <div class="flex flex-col">
     <header class="flex h-12 items-center justify-between p-2 px-4">
       multichrono
       <RouterLink to="/settings">
