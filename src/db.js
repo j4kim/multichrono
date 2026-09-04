@@ -10,8 +10,9 @@ export async function getGunValue(gunStore) {
   return await new Promise((resolve) => {
     gunStore.once((value, key) => {
       console.log(">>>", value, key);
-      if (value && value._) {
-        delete value._;
+      if (value) {
+        resolve(JSON.parse(value));
+        return;
       }
       resolve(value);
     });
@@ -20,7 +21,7 @@ export async function getGunValue(gunStore) {
 
 export async function putGunValue(gunStore, newValue) {
   return await new Promise((resolve) => {
-    gunStore.put(newValue, resolve);
+    gunStore.put(JSON.stringify(newValue), resolve);
   });
 }
 
