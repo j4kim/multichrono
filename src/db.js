@@ -8,7 +8,7 @@ export const dbId = urlDbId ? ref(urlDbId) : useStorage("dbId");
 
 export async function getGunValue(gunStore) {
   return await new Promise((resolve) => {
-    gunStore.on((value, key) => {
+    gunStore.once((value, key) => {
       console.log(">>>", value, key);
       if (value && value._) {
         delete value._;
