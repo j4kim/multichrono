@@ -66,8 +66,31 @@ export async function useGun(key, defaultValue) {
 
 export async function createRef(key, defaultValue) {
   if (dbId.value) {
-    return await useGun(key, defaultValue);
+    return await useGun(key, useStorage(key, defaultValue).value);
   } else {
     return useStorage(key, defaultValue);
+  }
+}
+
+export async function connectToDb() {
+  const newDbId = prompt("ID de la base de données");
+  if (
+    confirm(
+      "Si la base de données existe, vos données locales seront remplacées. Sinon, la base de données sera créée avec vos données locales. OK ?",
+    )
+  ) {
+    dbId.value = newDbId;
+    location.reload();
+  }
+}
+
+export async function disconnectFromDb() {
+  if (
+    confirm(
+      "Les données actuelles seront remplacées par vos données locales. OK ?",
+    )
+  ) {
+    dbId.value = null;
+    location.reload();
   }
 }

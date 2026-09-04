@@ -1,5 +1,6 @@
 import { computed, ref } from "vue";
 import { createRef } from "./db";
+import { useStorage } from "@vueuse/core";
 
 // States
 
@@ -16,7 +17,7 @@ export function newChronoId() {
   return Date.now() + "." + Math.random();
 }
 
-export const chronos = await createRef("chronos-v01", {
+export const chronos = await useStorage("chronos-v01", {
   [newChronoId()]: newChrono(null),
 });
 
