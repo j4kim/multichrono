@@ -1,9 +1,9 @@
-import { useStorage } from "@vueuse/core";
 import { computed, ref } from "vue";
+import { createRef } from "./db";
 
 // States
 
-export const settings = useStorage("settings-v01", {
+export const settings = await createRef("settings-v01", {
   hourlyRate: 30,
   startOffsetMinutes: 0,
 });
@@ -16,7 +16,7 @@ export function newChronoId() {
   return Date.now() + "." + Math.random();
 }
 
-export const chronos = useStorage("chronos-v01", {
+export const chronos = await createRef("chronos-v01", {
   [newChronoId()]: newChrono(null),
 });
 
