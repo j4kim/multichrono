@@ -2,7 +2,7 @@
 
 Une application de gestion de plusieurs chronomètres en parallèle, avec tarification horaire. Idéal pour facturer la location d'équipements, genre des cibles de fléchettes.
 
-Aucune base de données (pour l'instant ?), les données sont sauvegardées dans le localStorage du navigateur.
+Les données sont à choix stockées uniquement dans le navigateur ou sur un serveur gun.js avec mises à jour temps réel sur tous les terminaux connectés.
 
 ## Installation
 
