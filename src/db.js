@@ -1,15 +1,15 @@
 import { useStorage } from "@vueuse/core";
 import GUN from "gun";
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 const urlDbId = new URLSearchParams(location.search).get("db");
 
 export const dbId = urlDbId ? ref(urlDbId) : useStorage("dbId");
 
-export async function getGunValue(gunStore) {
+export async function getGunValue(gunNode) {
   return await new Promise((resolve) => {
-    gunStore.once((value, key) => {
-      console.log(">>>", value, key);
+    gunNode.once((value, key) => {
+      console.log(key, "once callback", value);
       if (value) {
         resolve(JSON.parse(value));
         return;
@@ -19,28 +19,49 @@ export async function getGunValue(gunStore) {
   });
 }
 
-export async function putGunValue(gunStore, newValue) {
+export async function putGunValue(gunNode, newValue) {
   return await new Promise((resolve) => {
-    gunStore.put(JSON.stringify(newValue), resolve);
+    gunNode.put(JSON.stringify(newValue), resolve);
   });
 }
 
 export async function useGun(key, defaultValue) {
   const gun = GUN(["https://gun.jo2.ch/gun"]);
 
-  const gunStore = gun.get("multichrono-" + dbId.value).get(key);
+  const gunNode = gun.get("multichrono-" + dbId.value).get(key);
 
-  let gunValue = await getGunValue(gunStore);
+  let gunValue = await getGunValue(gunNode);
 
   if (!gunValue) {
-    console.log("Put default gun value", key, defaultValue, dbId.value);
-    await putGunValue(gunStore, defaultValue);
+    console.log(key, "Put default gun value", key, defaultValue);
+    await putGunValue(gunNode, defaultValue);
     gunValue = defaultValue;
-  } else {
-    console.log("Existing gun value", key, gunValue, dbId.value);
   }
 
-  return ref(gunValue);
+  const keyRef = ref(gunValue);
+
+  const jsonValue = computed(() => JSON.stringify(keyRef.value));
+
+  gunNode.on(function (value, key, _msg, _ev) {
+    if (value === jsonValue.value) {
+      console.log(key, "on", "value did not change");
+      return;
+    }
+    console.log(key, "on", value);
+
+    keyRef.value = JSON.parse(value);
+  });
+
+  watch(
+    keyRef,
+    async (newValue) => {
+      console.log(key, "watch", newValue);
+      await putGunValue(gunNode, newValue);
+    },
+    { deep: true },
+  );
+
+  return keyRef;
 }
 
 export async function createRef(key, defaultValue) {
