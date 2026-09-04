@@ -1,5 +1,6 @@
 <script setup>
 import Chrono from "../components/Chrono.vue";
+import { dbId } from "../db.js";
 import { add, chronos } from "../store.js";
 import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
 </script>
@@ -8,6 +9,7 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
   <div class="flex flex-col">
     <header class="flex h-12 items-center justify-between gap-4 p-2 px-4">
       <a href="/" class="link">multichrono</a>
+      <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
       <div class="grow"></div>
       <PlusIcon class="link size-6" @click="() => add()" />
       <RouterLink to="/settings">
