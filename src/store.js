@@ -64,7 +64,9 @@ export function remove(id) {
 }
 
 export function add(label) {
-  chronos.value[newChronoId()] = newChrono(label);
+  const chrono = newChrono(label);
+  chronos.value[newChronoId()] = chrono;
+  renameModal.value = chrono;
 }
 
 export function confirmAndRemove(id) {

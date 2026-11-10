@@ -34,7 +34,7 @@ function rename() {
 <template>
   <dialog ref="dialog" class="modal">
     <div class="modal-box">
-      <h3 class="mb-4 text-lg font-bold">Renommer chrono</h3>
+      <h3 class="mb-4 text-lg font-bold">Nom du chrono</h3>
 
       <input
         v-model="newLabel"
