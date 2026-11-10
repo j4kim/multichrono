@@ -1,5 +1,6 @@
 <script setup>
 import {
+  EllipsisHorizontalIcon,
   PauseCircleIcon,
   PlayCircleIcon,
   StopCircleIcon,
@@ -48,6 +49,9 @@ function allow(action) {
       class="disabled:pointer-events-none disabled:opacity-50"
     >
       <StopCircleIcon :class="[iconClass, 'link']" />
+    </button>
+    <button>
+      <EllipsisHorizontalIcon class="link size-8" />
     </button>
   </div>
 </template>
