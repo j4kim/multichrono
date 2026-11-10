@@ -40,6 +40,6 @@ const { lengthX } = useSwipe(el, {
       <Time class="text-2xl sm:text-4xl" :chrono></Time>
       <Price class="text-2xl font-bold sm:text-3xl" :chrono></Price>
     </div>
-    <ChronoButtons :chrono />
+    <ChronoButtons :chrono :id />
   </div>
 </template>

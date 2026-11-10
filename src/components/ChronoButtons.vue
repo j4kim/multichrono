@@ -1,14 +1,18 @@
 <script setup>
 import {
+  ClockIcon,
   EllipsisHorizontalIcon,
   PauseCircleIcon,
+  PencilIcon,
   PlayCircleIcon,
   StopCircleIcon,
+  XMarkIcon,
 } from "@heroicons/vue/24/solid";
 import { pause, start, stop } from "../store";
 
 const props = defineProps({
   chrono: Object,
+  id: String,
   iconClass: {
     type: String,
     default: "size-12 sm:size-14",
@@ -50,8 +54,29 @@ function allow(action) {
     >
       <StopCircleIcon :class="[iconClass, 'link']" />
     </button>
-    <button>
+    <button
+      :style="`anchor-name: --other-actions-${id}`"
+      :popovertarget="`${id}-actions-popover`"
+    >
       <EllipsisHorizontalIcon class="link size-8" />
     </button>
+    <ul
+      class="dropdown menu rounded-box w-52 bg-slate-800 shadow-sm"
+      popover
+      :id="`${id}-actions-popover`"
+      :style="`position-anchor: --other-actions-${id}`"
+    >
+      <li>
+        <button class="link"><PencilIcon class="size-4" /> Renommer</button>
+      </li>
+      <li>
+        <button class="link">
+          <ClockIcon class="size-4" /> Modifier le temps
+        </button>
+      </li>
+      <li>
+        <button class="link-red"><XMarkIcon class="size-4" /> Supprimer</button>
+      </li>
+    </ul>
   </div>
 </template>

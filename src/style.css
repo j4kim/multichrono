@@ -1,8 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
+@plugin "daisyui" {
+  exclude: rootcolor;
+}
 
 .link {
-  @apply cursor-pointer hover:text-cyan-500;
+  @apply cursor-pointer no-underline hover:text-cyan-500;
+}
+.link-red {
+  @apply cursor-pointer no-underline hover:text-red-500;
 }
 
 @utility btn {
