@@ -30,14 +30,14 @@ const { lengthX } = useSwipe(el, {
   <div
     ref="el"
     :chrono="chrono"
-    class="flex h-40 grow items-center justify-between px-6 py-1"
+    class="flex h-32 grow flex-wrap items-center justify-between px-6 py-1 sm:h-40"
     :class="getBgClass(chrono)"
   >
     <div>
       <div class="text-xl font-light">
         {{ chrono.label }}
       </div>
-      <Time class="text-3xl sm:text-4xl" :chrono></Time>
+      <Time class="text-2xl sm:text-4xl" :chrono></Time>
       <Price class="text-2xl font-bold sm:text-3xl" :chrono></Price>
     </div>
     <ChronoButtons :chrono />
