@@ -117,6 +117,6 @@ export function getStateString(chrono) {
 
 // modals
 
-export const renameModal = ref(null);
+export const renameModal = ref(null); // contains chrono instance
 export const updateModal = ref(null);
-export const deleteModal = ref(null);
+export const deleteModal = ref(null); // contains chrono id
