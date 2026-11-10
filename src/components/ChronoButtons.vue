@@ -61,7 +61,7 @@ function allow(action) {
       <EllipsisHorizontalIcon class="link size-8" />
     </button>
     <ul
-      class="dropdown menu rounded-box w-52 bg-slate-800 shadow-sm"
+      class="dropdown menu rounded-box w-52 bg-slate-800 text-lg shadow-sm"
       popover
       :id="`${id}-actions-popover`"
       :style="`position-anchor: --other-actions-${id}`"
