@@ -54,7 +54,7 @@ function addChrono() {
         />
       </fieldset>
 
-      <fieldset class="fieldset text-base">
+      <fieldset class="fieldset block text-base">
         <legend class="fieldset-legend">Base de données</legend>
         <div v-if="dbId" class="flex items-center gap-4">
           {{ dbId }}
