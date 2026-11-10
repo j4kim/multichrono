@@ -32,45 +32,39 @@ function addChrono() {
     </header>
 
     <div class="flex grow flex-col gap-12 p-6">
-      <div>
-        <label class="block">
-          Tarif horaire par défaut
-          <input
-            v-model="settings.hourlyRate"
-            class="input mt-1"
-            type="number"
-          />
-        </label>
+      <fieldset class="fieldset text-base">
+        <legend class="fieldset-legend">Tarif horaire par défaut</legend>
+        <input v-model="settings.hourlyRate" class="input" type="number" />
         <div class="mt-2 flex items-center gap-2">
           <button class="btn" @click="apply" :disabled="applying">
             Appliquer à tous les chronos
           </button>
           <span v-if="applying" class="text-xl">👌</span>
         </div>
-      </div>
+      </fieldset>
 
-      <div>
-        <label class="block">
+      <fieldset class="fieldset text-base">
+        <legend class="fieldset-legend">
           Valeur du chrono au démarrage (en minutes)
-          <input
-            v-model="settings.startOffsetMinutes"
-            class="input mt-1"
-            type="number"
-          />
-        </label>
-      </div>
+        </legend>
+        <input
+          v-model="settings.startOffsetMinutes"
+          class="input"
+          type="number"
+        />
+      </fieldset>
 
-      <div>
-        <div class="mb-2">Base de données</div>
+      <fieldset class="fieldset text-base">
+        <legend class="fieldset-legend">Base de données</legend>
         <div v-if="dbId" class="flex items-center gap-4">
           {{ dbId }}
-          <button class="red-btn" @click="disconnectFromDb">
-            <XMarkIcon class="inline size-5" />
-            <span class="hidden sm:inline">Déconnecter</span>
+          <button class="btn btn-error btn-soft" @click="disconnectFromDb">
+            <XMarkIcon class="size-5" />
+            <span>Déconnecter</span>
           </button>
         </div>
         <button class="btn" @click="connectToDb" v-else>Connecter</button>
-      </div>
+      </fieldset>
     </div>
   </div>
 </template>
