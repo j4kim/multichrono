@@ -25,7 +25,7 @@ function deleteChrono() {
 
 <template>
   <dialog ref="dialog" class="modal">
-    <div class="modal-box">
+    <div class="modal-box max-w-sm">
       <h3 class="mb-4 text-lg font-bold">Supprimer le chrono</h3>
 
       <p>Sûr ?</p>

@@ -33,7 +33,7 @@ function rename() {
 
 <template>
   <dialog ref="dialog" class="modal">
-    <div class="modal-box">
+    <div class="modal-box max-w-sm">
       <h3 class="mb-4 text-lg font-bold">Nom du chrono</h3>
 
       <input
