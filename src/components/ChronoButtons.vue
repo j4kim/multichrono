@@ -10,7 +10,7 @@ const props = defineProps({
   chrono: Object,
   iconClass: {
     type: String,
-    default: "size-12 sm:size-16",
+    default: "size-12 sm:size-14",
   },
 });
 </script>

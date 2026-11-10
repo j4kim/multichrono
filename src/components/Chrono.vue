@@ -37,8 +37,8 @@ const { lengthX } = useSwipe(el, {
       <div class="text-xl font-light">
         {{ chrono.label }}
       </div>
-      <Time class="text-4xl" :chrono></Time>
-      <Price class="text-3xl font-bold" :chrono></Price>
+      <Time class="text-3xl sm:text-4xl" :chrono></Time>
+      <Price class="text-2xl font-bold sm:text-3xl" :chrono></Price>
     </div>
     <ChronoButtons :chrono />
   </div>
