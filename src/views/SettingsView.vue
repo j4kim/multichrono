@@ -1,12 +1,6 @@
 <script setup>
-import { ArrowLeftIcon, PlusIcon, XMarkIcon } from "@heroicons/vue/24/solid";
-import {
-  add,
-  settings,
-  chronos,
-  confirmAndRemove,
-  getStateString,
-} from "../store.js";
+import { ArrowLeftIcon, XMarkIcon } from "@heroicons/vue/24/solid";
+import { add, settings, chronos } from "../store.js";
 import { ref } from "vue";
 import { connectToDb, dbId, disconnectFromDb } from "../db.js";
 
@@ -64,38 +58,6 @@ function addChrono() {
             type="number"
           />
         </label>
-      </div>
-
-      <div>
-        <div>Chronos</div>
-        <table class="mt-1 w-full">
-          <tr v-for="(chrono, id) in chronos">
-            <td class="pr-2">
-              <RouterLink
-                :to="`/chrono/${id}`"
-                class="font-bold text-cyan-500 hover:underline"
-              >
-                {{ chrono.label ?? "(sans nom)" }}
-              </RouterLink>
-            </td>
-            <td class="pr-2">
-              <span v-if="chrono.hourlyRate">
-                CHF {{ chrono.hourlyRate }}
-              </span>
-            </td>
-            <td class="pr-2">{{ getStateString(chrono) }}</td>
-            <td>
-              <button class="red-btn my-2" @click="confirmAndRemove(id)">
-                <XMarkIcon class="inline size-5" />
-                <span class="hidden sm:inline">Supprimer</span>
-              </button>
-            </td>
-          </tr>
-        </table>
-        <button class="btn my-2" @click="addChrono">
-          <PlusIcon class="inline size-5" />
-          <span>Ajouter un chrono</span>
-        </button>
       </div>
 
       <div>
