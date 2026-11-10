@@ -3,12 +3,12 @@ import {
   ClockIcon,
   EllipsisHorizontalIcon,
   PauseCircleIcon,
+  PencilIcon,
   PlayCircleIcon,
   StopCircleIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/solid";
-import { pause, start, stop } from "../store";
-import RenameModalLi from "./RenameModalLi.vue";
+import { pause, renameModal, start, stop } from "../store";
 
 const props = defineProps({
   chrono: Object,
@@ -66,7 +66,11 @@ function allow(action) {
       :id="`${id}-actions-popover`"
       :style="`position-anchor: --other-actions-${id}`"
     >
-      <RenameModalLi :id :chrono />
+      <li>
+        <button class="link" @click="renameModal = chrono">
+          <PencilIcon class="size-4" /> Renommer
+        </button>
+      </li>
       <li>
         <button class="link">
           <ClockIcon class="size-4" /> Modifier le temps

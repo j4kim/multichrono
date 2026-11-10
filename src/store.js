@@ -112,3 +112,7 @@ export function getStateString(chrono) {
     }[chrono.state] ?? "?"
   );
 }
+
+// modals
+
+export const renameModal = ref(null);

@@ -1,5 +1,6 @@
 <script setup>
 import Chrono from "../components/Chrono.vue";
+import RenameModal from "../components/RenameModal.vue";
 import { dbId } from "../db.js";
 import { add, chronos } from "../store.js";
 import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
@@ -19,5 +20,6 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
     <div class="flex grow flex-col gap-1">
       <Chrono v-for="(chrono, id) in chronos" :key="id" :chrono :id />
     </div>
+    <RenameModal />
   </div>
 </template>
