@@ -8,7 +8,7 @@ import {
   StopCircleIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/solid";
-import { pause, renameModal, start, stop } from "../store";
+import { deleteModal, pause, renameModal, start, stop } from "../store";
 
 const props = defineProps({
   chrono: Object,
@@ -77,7 +77,9 @@ function allow(action) {
         </button>
       </li>
       <li>
-        <button class="link-red"><XMarkIcon class="size-4" /> Supprimer</button>
+        <button class="link-red" @click="deleteModal = id">
+          <XMarkIcon class="size-4" /> Supprimer
+        </button>
       </li>
     </ul>
   </div>

@@ -118,3 +118,5 @@ export function getStateString(chrono) {
 // modals
 
 export const renameModal = ref(null);
+export const updateModal = ref(null);
+export const deleteModal = ref(null);
