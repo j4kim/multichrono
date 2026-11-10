@@ -30,7 +30,7 @@ const { lengthX } = useSwipe(el, {
   <div
     ref="el"
     :chrono="chrono"
-    class="flex h-32 grow flex-wrap items-center justify-between px-6 py-1 sm:h-40"
+    class="flex min-h-32 grow flex-wrap items-center justify-between px-6 py-3 sm:min-h-40"
     :class="getBgClass(chrono)"
   >
     <div>

@@ -32,7 +32,7 @@ function allow(action) {
 </script>
 
 <template>
-  <div class="flex gap-2 sm:gap-3">
+  <div class="flex flex-wrap gap-2 sm:gap-3">
     <button
       :disabled="!allow('start')"
       @click.stop="start(chrono)"
