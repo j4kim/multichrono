@@ -13,22 +13,37 @@ const props = defineProps({
     default: "size-12 sm:size-14",
   },
 });
+
+const stateMachine = {
+  initial: ["start"],
+  started: ["pause"],
+  paused: ["stop", "start"],
+};
+
+function allow(action) {
+  const allowed = stateMachine[props.chrono.state];
+  return allowed.includes(action);
+}
 </script>
 
 <template>
   <div class="flex gap-2 sm:gap-3">
     <button
-      v-if="chrono.state === 'initial' || chrono.state === 'paused'"
+      :disabled="!allow('start')"
       @click.stop="start(chrono)"
+      class="disabled:pointer-events-none disabled:opacity-50"
     >
       <PlayCircleIcon :class="[iconClass, 'link']" />
     </button>
-    <button v-if="chrono.state === 'started'" @click.stop="pause(chrono)">
+    <button
+      :disabled="!allow('pause')"
+      @click.stop="pause(chrono)"
+      class="disabled:pointer-events-none disabled:opacity-50"
+    >
       <PauseCircleIcon :class="[iconClass, 'link']" />
     </button>
     <button
-      v-if="chrono.state !== 'initial'"
-      :disabled="chrono.state !== 'paused'"
+      :disabled="!allow('stop')"
       @click.stop="stop(chrono)"
       class="disabled:pointer-events-none disabled:opacity-50"
     >
