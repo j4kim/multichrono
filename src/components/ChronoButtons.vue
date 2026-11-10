@@ -8,7 +8,14 @@ import {
   StopCircleIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/solid";
-import { deleteModal, pause, renameModal, start, stop } from "../store";
+import {
+  deleteModal,
+  pause,
+  renameModal,
+  start,
+  stop,
+  updateModal,
+} from "../store";
 
 const props = defineProps({
   chrono: Object,
@@ -72,7 +79,7 @@ function allow(action) {
         </button>
       </li>
       <li>
-        <button class="link">
+        <button class="link" @click="updateModal = chrono">
           <ClockIcon class="size-4" /> Modifier le temps
         </button>
       </li>
