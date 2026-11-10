@@ -1,12 +1,12 @@
 <script setup>
 import { nextTick, ref, useTemplateRef, watch } from "vue";
-import { updateModal } from "../store";
+import { updateTimeModal } from "../store";
 
 const dialog = useTemplateRef("dialog");
 
 const minutes = ref();
 
-watch(updateModal, async (chrono) => {
+watch(updateTimeModal, async (chrono) => {
   if (!chrono) {
     dialog.value.close();
     minutes.value = null;
@@ -21,7 +21,7 @@ watch(updateModal, async (chrono) => {
 });
 
 function cancel() {
-  updateModal.value = null;
+  updateTimeModal.value = null;
 }
 
 function update() {
@@ -29,9 +29,9 @@ function update() {
     return;
   }
   const ms = +minutes.value * 60000;
-  updateModal.value.started_at = Date.now();
-  updateModal.value.offset = ms;
-  updateModal.value = null;
+  updateTimeModal.value.started_at = Date.now();
+  updateTimeModal.value.offset = ms;
+  updateTimeModal.value = null;
 }
 </script>
 

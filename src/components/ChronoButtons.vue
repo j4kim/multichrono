@@ -14,7 +14,7 @@ import {
   renameModal,
   start,
   stop,
-  updateModal,
+  updateTimeModal,
 } from "../store";
 
 const props = defineProps({
@@ -68,7 +68,7 @@ function allow(action) {
       <EllipsisHorizontalIcon class="link size-8" />
     </button>
     <ul
-      class="dropdown menu rounded-box w-52 bg-slate-800 text-lg shadow-sm"
+      class="dropdown menu rounded-box w-52 bg-slate-800 shadow-sm"
       popover
       :id="`${id}-actions-popover`"
       :style="`position-anchor: --other-actions-${id}`"
@@ -79,7 +79,7 @@ function allow(action) {
         </button>
       </li>
       <li>
-        <button class="link" @click="updateModal = chrono">
+        <button class="link" @click="updateTimeModal = chrono">
           <ClockIcon class="size-4" /> Modifier le temps
         </button>
       </li>

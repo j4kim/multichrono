@@ -2,7 +2,7 @@
 import Chrono from "../components/Chrono.vue";
 import DeleteModal from "../components/DeleteModal.vue";
 import RenameModal from "../components/RenameModal.vue";
-import UpdateModal from "../components/UpdateModal.vue";
+import UpdateTimeModal from "../components/UpdateTimeModal.vue";
 import { dbId } from "../db.js";
 import { add, chronos } from "../store.js";
 import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
@@ -23,7 +23,7 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
       <Chrono v-for="(chrono, id) in chronos" :key="id" :chrono :id />
     </div>
     <RenameModal />
-    <UpdateModal />
+    <UpdateTimeModal />
     <DeleteModal />
   </div>
 </template>
