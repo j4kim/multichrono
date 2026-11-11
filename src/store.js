@@ -25,6 +25,10 @@ export const orderedChronoIds = await createRef(
   Object.keys(chronos.value),
 );
 
+export function resetIds() {
+  orderedChronoIds.value = Object.keys(chronos.value);
+}
+
 export function newChrono(label) {
   return {
     label,

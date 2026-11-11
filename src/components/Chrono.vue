@@ -1,5 +1,5 @@
 <script setup>
-import { chronos, getBgClass, stop } from "../store.js";
+import { chronos, getBgClass, resetIds, stop } from "../store.js";
 import Time from "./Time.vue";
 import ChronoButtons from "./ChronoButtons.vue";
 import Price from "./Price.vue";
@@ -29,6 +29,7 @@ const { lengthX } = useSwipe(el, {
 
 <template>
   <div
+    v-if="chrono"
     ref="el"
     class="flex min-h-32 grow flex-wrap items-center justify-between px-6 py-3 sm:min-h-40"
     :class="getBgClass(chrono)"
@@ -41,5 +42,9 @@ const { lengthX } = useSwipe(el, {
       <Price class="text-2xl font-bold sm:text-3xl" :chrono></Price>
     </div>
     <ChronoButtons :chrono :id />
+  </div>
+  <div v-else>
+    Chrono {{ id }} not found.
+    <button class="btn" @click="resetIds">reset</button>
   </div>
 </template>
