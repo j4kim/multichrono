@@ -34,7 +34,13 @@ function addChrono() {
     <div class="flex grow flex-col gap-12 p-6">
       <fieldset class="fieldset text-base">
         <legend class="fieldset-legend">Tarif horaire par défaut</legend>
-        <input v-model="settings.hourlyRate" class="input" type="number" />
+        <input
+          v-model="settings.hourlyRate"
+          class="input"
+          type="text"
+          pattern="\d*"
+          inputmode="numeric"
+        />
         <div class="mt-2 flex items-center gap-2">
           <button class="btn" @click="apply" :disabled="applying">
             Appliquer à tous les chronos

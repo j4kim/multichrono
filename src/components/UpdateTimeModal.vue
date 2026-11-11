@@ -45,6 +45,7 @@ function update() {
         <input
           v-model="minutes"
           type="number"
+          inputmode="numeric"
           placeholder="Type here"
           class="input w-full"
           @keyup.enter="update"
