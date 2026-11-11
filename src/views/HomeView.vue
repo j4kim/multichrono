@@ -5,7 +5,7 @@ import RenameModal from "../components/RenameModal.vue";
 import UpdateRateModal from "../components/UpdateRateModal.vue";
 import UpdateTimeModal from "../components/UpdateTimeModal.vue";
 import { dbId } from "../db.js";
-import { add, chronos } from "../store.js";
+import { add, orderedChronoIds } from "../store.js";
 import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
 </script>
 
@@ -21,7 +21,7 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </header>
     <div class="flex grow flex-col gap-1">
-      <Chrono v-for="(chrono, id) in chronos" :key="id" :chrono :id />
+      <Chrono v-for="id in orderedChronoIds" :key="id" :id />
     </div>
     <RenameModal />
     <UpdateTimeModal />

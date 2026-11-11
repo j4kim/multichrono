@@ -20,6 +20,11 @@ export const chronos = await createRef("chronos-v01", {
   [newChronoId()]: newChrono(null),
 });
 
+export const orderedChronoIds = await createRef(
+  "ordered-chrono-ids",
+  Object.keys(chronos.value),
+);
+
 export function newChrono(label) {
   return {
     label,
