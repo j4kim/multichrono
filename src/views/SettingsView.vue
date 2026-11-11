@@ -57,7 +57,6 @@ function addChrono() {
           v-model="settings.startOffsetMinutes"
           class="input"
           type="number"
-          inputmode="numeric"
         />
       </fieldset>
 
