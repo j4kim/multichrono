@@ -20,6 +20,15 @@ export const chronos = await createRef("chronos-v01", {
   [newChronoId()]: newChrono(null),
 });
 
+export const orderedChronoIds = await createRef(
+  "ordered-chrono-ids",
+  Object.keys(chronos.value),
+);
+
+export function resetIds() {
+  orderedChronoIds.value = Object.keys(chronos.value);
+}
+
 export function newChrono(label) {
   return {
     label,
@@ -60,12 +69,18 @@ export function stop(chrono) {
 }
 
 export function remove(id) {
+  orderedChronoIds.value.splice(
+    orderedChronoIds.value.findIndex((i) => i === id),
+    1,
+  );
   delete chronos.value[id];
 }
 
 export function add(label) {
   const chrono = newChrono(label);
-  chronos.value[newChronoId()] = chrono;
+  const id = newChronoId();
+  orderedChronoIds.value.push(id);
+  chronos.value[id] = chrono;
   renameModal.value = chrono;
 }
 
