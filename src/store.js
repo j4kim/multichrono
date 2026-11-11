@@ -20,6 +20,15 @@ export const chronos = await createRef("chronos-v01", {
   [newChronoId()]: newChrono(null),
 });
 
+export const orderedChronoIds = await createRef(
+  "ordered-chrono-ids",
+  Object.keys(chronos.value),
+);
+
+export function resetIds() {
+  orderedChronoIds.value = Object.keys(chronos.value);
+}
+
 export function newChrono(label) {
   return {
     label,
@@ -60,11 +69,19 @@ export function stop(chrono) {
 }
 
 export function remove(id) {
+  orderedChronoIds.value.splice(
+    orderedChronoIds.value.findIndex((i) => i === id),
+    1,
+  );
   delete chronos.value[id];
 }
 
 export function add(label) {
-  chronos.value[newChronoId()] = newChrono(label);
+  const chrono = newChrono(label);
+  const id = newChronoId();
+  orderedChronoIds.value.push(id);
+  chronos.value[id] = chrono;
+  renameModal.value = chrono;
 }
 
 export function confirmAndRemove(id) {
@@ -112,3 +129,10 @@ export function getStateString(chrono) {
     }[chrono.state] ?? "?"
   );
 }
+
+// modals
+
+export const renameModal = ref(null); // contains chrono object
+export const updateTimeModal = ref(null); // contains chrono object
+export const updateRateModal = ref(null); // contains chrono object
+export const deleteModal = ref(null); // contains chrono id
