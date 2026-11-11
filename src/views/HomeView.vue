@@ -1,4 +1,5 @@
 <script setup>
+import Draggable from "vuedraggable";
 import Chrono from "../components/Chrono.vue";
 import DeleteModal from "../components/DeleteModal.vue";
 import RenameModal from "../components/RenameModal.vue";
@@ -20,9 +21,16 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
         <Cog6ToothIcon class="link size-6" />
       </RouterLink>
     </header>
-    <div class="flex grow flex-col gap-1">
-      <Chrono v-for="id in orderedChronoIds" :key="id" :id />
-    </div>
+    <Draggable
+      class="flex grow flex-col gap-1"
+      :list="orderedChronoIds"
+      :item-key="(id) => id"
+      handle=".handle"
+    >
+      <template #item="{ element: id }">
+        <Chrono :key="id" :id="id" />
+      </template>
+    </Draggable>
     <RenameModal />
     <UpdateTimeModal />
     <UpdateRateModal />

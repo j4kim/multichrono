@@ -64,6 +64,7 @@ function allow(action) {
       <StopCircleIcon :class="[iconClass, 'link']" />
     </button>
     <button
+      class="handle"
       :style="`anchor-name: --other-actions-${id}`"
       :popovertarget="`${id}-actions-popover`"
     >
