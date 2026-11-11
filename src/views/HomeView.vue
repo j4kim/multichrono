@@ -26,6 +26,9 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
       :list="orderedChronoIds"
       :item-key="(id) => id"
       handle=".handle"
+      :delay="100"
+      :delay-on-touch-only="true"
+      direction="vertical"
     >
       <template #item="{ element: id }">
         <Chrono :key="id" :id="id" />
