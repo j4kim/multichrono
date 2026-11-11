@@ -1,6 +1,7 @@
 <script setup>
 import {
   ClockIcon,
+  CurrencyDollarIcon,
   EllipsisHorizontalIcon,
   PauseCircleIcon,
   PencilIcon,
@@ -14,6 +15,7 @@ import {
   renameModal,
   start,
   stop,
+  updateRateModal,
   updateTimeModal,
 } from "../store";
 
@@ -81,6 +83,11 @@ function allow(action) {
       <li>
         <button class="link" @click="updateTimeModal = chrono">
           <ClockIcon class="size-4" /> Modifier le temps
+        </button>
+      </li>
+      <li>
+        <button class="link" @click="updateRateModal = chrono">
+          <CurrencyDollarIcon class="size-4" /> Tarif horaire
         </button>
       </li>
       <li>

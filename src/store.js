@@ -119,4 +119,5 @@ export function getStateString(chrono) {
 
 export const renameModal = ref(null); // contains chrono object
 export const updateTimeModal = ref(null); // contains chrono object
+export const updateRateModal = ref(null); // contains chrono object
 export const deleteModal = ref(null); // contains chrono id

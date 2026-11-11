@@ -2,6 +2,7 @@
 import Chrono from "../components/Chrono.vue";
 import DeleteModal from "../components/DeleteModal.vue";
 import RenameModal from "../components/RenameModal.vue";
+import UpdateRateModal from "../components/UpdateRateModal.vue";
 import UpdateTimeModal from "../components/UpdateTimeModal.vue";
 import { dbId } from "../db.js";
 import { add, chronos } from "../store.js";
@@ -24,6 +25,7 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
     </div>
     <RenameModal />
     <UpdateTimeModal />
+    <UpdateRateModal />
     <DeleteModal />
   </div>
 </template>
