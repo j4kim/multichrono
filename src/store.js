@@ -65,12 +65,18 @@ export function stop(chrono) {
 }
 
 export function remove(id) {
+  orderedChronoIds.value.splice(
+    orderedChronoIds.value.findIndex((i) => i === id),
+    1,
+  );
   delete chronos.value[id];
 }
 
 export function add(label) {
   const chrono = newChrono(label);
-  chronos.value[newChronoId()] = chrono;
+  const id = newChronoId();
+  orderedChronoIds.value.push(id);
+  chronos.value[id] = chrono;
   renameModal.value = chrono;
 }
 
