@@ -10,3 +10,7 @@
 .link-red {
   @apply no-underline hover:text-(--color-error);
 }
+
+@utility modal-box {
+  @apply bg-slate-800;
+}
