@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui" {
   exclude: rootcolor;
+  themes: dark --default;
 }
 
 .link {
